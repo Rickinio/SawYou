@@ -1,0 +1,25 @@
+﻿<h2>List Of Current CheckIns</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Μαγαζί</th>
+            <th>Διεύθυνση</th>
+            <th>Μύνημα</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="checkIn in vm.checkIns">
+            <td>{{checkIn.FoursquareVenueName}}</td>
+            <td>{{checkIn.FoursquareVenueAddress}}</td>
+            <td>{{checkIn.CheckInDescription}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<input type="text" ng-model="vm.selectedVenue" placeholder="Search for a place" typeahead-template-url="Templates/Common/FoursquareSearchTypeahead" typeahead="places as places.name for places in vm.getAlert($viewValue)" typeahead-loading="loadingVenues" class="form-control">
+<i ng-show="loadingVenues" class="glyphicon glyphicon-refresh"></i>
+
+<input type="text" ng-model="vm.Description" placeholder="Description" />
+
+<input type="button" value="Save" data-ng-click="vm.save()" />
